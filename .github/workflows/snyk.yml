@@ -51,8 +51,18 @@ jobs:
         with:
           args: --severity-threshold=high --sarif-file-output=snyk.sarif
           
+      - name: Check if SARIF file exists
+        id: sarif-check
+        run: |
+          if (Test-Path snyk.sarif) {
+            echo "exists=true" >> $env:GITHUB_OUTPUT
+          } else {
+            echo "exists=false" >> $env:GITHUB_OUTPUT
+          }
+        shell: pwsh
+          
       - name: Upload result to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@v3
-        if: always()
+        if: steps.sarif-check.outputs.exists == 'true'
         with:
           sarif_file: snyk.sarif
