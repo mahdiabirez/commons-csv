@@ -251,6 +251,45 @@
           </excludes>
         </configuration>
       </plugin>
+      <!-- PiTest Mutation Testing Plugin -->
+      <plugin>
+        <groupId>org.pitest</groupId>
+        <artifactId>pitest-maven</artifactId>
+        <version>1.18.1</version>
+        <dependencies>
+          <dependency>
+            <groupId>org.pitest</groupId>
+            <artifactId>pitest-junit5-plugin</artifactId>
+            <version>1.2.1</version>
+          </dependency>
+        </dependencies>
+        <configuration>
+          <targetClasses>
+            <param>org.apache.commons.csv.*</param>
+          </targetClasses>
+          <targetTests>
+            <param>org.apache.commons.csv.*</param>
+          </targetTests>
+          <excludedClasses>
+            <param>org.apache.commons.csv.Constants</param>
+            <param>org.apache.commons.csv.QuoteMode</param>
+            <param>org.apache.commons.csv.DuplicateHeaderMode</param>
+          </excludedClasses>
+          <excludedTestClasses>
+            <param>org.apache.commons.csv.CSVParserTest</param>
+            <param>org.apache.commons.csv.JiraCsv196Test</param>
+          </excludedTestClasses>
+          <outputFormats>
+            <outputFormat>HTML</outputFormat>
+            <outputFormat>XML</outputFormat>
+          </outputFormats>
+          <timestampedReports>false</timestampedReports>
+          <mutationThreshold>80</mutationThreshold>
+          <coverageThreshold>95</coverageThreshold>
+          <threads>4</threads>
+          <verbose>true</verbose>
+        </configuration>
+      </plugin>
       <!-- Allow checkstyle to be run interactively; keep in sync with report config below -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
