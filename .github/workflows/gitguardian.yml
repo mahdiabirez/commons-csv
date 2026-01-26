@@ -29,7 +29,7 @@ jobs:
     name: GitGuardian Scan
     runs-on: ubuntu-latest
     # Only run if GITGUARDIAN_API_KEY is set (optional - GitGuardian app integration is primary method)
-    if: ${{ secrets.GITGUARDIAN_API_KEY != '' }}
+    if: ${{ secrets.GITGUARDIAN_API_KEY }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
