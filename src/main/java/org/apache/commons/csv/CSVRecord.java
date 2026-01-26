@@ -129,10 +129,14 @@ public final class CSVRecord implements Serializable, Iterable<String> {
     //@ requires getHeaderMapRaw() != null;
     //@ requires getHeaderMapRaw().containsKey(name);
     //@ requires getHeaderMapRaw().get(name) != null;
-    //@ requires getHeaderMapRaw().get(name).intValue() >= 0 && getHeaderMapRaw().get(name).intValue() < values.length;
+    //@ requires getHeaderMapRaw().get(name).intValue() >= 0;
+    //@ requires getHeaderMapRaw().get(name).intValue() < values.length;
     //@ ensures \result == values[getHeaderMapRaw().get(name).intValue()];
     //@ signals (IllegalStateException e) getHeaderMapRaw() == null;
-    //@ signals (IllegalArgumentException e) getHeaderMapRaw() != null && (getHeaderMapRaw().get(name) == null || getHeaderMapRaw().get(name).intValue() < 0 || getHeaderMapRaw().get(name).intValue() >= values.length);
+    //@ signals (IllegalArgumentException e) getHeaderMapRaw() != null &&
+    //@   (getHeaderMapRaw().get(name) == null ||
+    //@    getHeaderMapRaw().get(name).intValue() < 0 ||
+    //@    getHeaderMapRaw().get(name).intValue() >= values.length);
     public String get(final String name) {
         final Map<String, Integer> headerMap = getHeaderMapRaw();
         if (headerMap == null) {
