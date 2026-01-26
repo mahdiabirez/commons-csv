@@ -26,3 +26,9 @@ buildNumber.properties
 # NetBeans files
 nb-configuration.xml
 nbactions.xml
+
+# OpenJML tool installation (third-party, not our code)
+tools/
+
+# Private academic notes - DO NOT COMMIT
+MY_PRIVATE_NOTES.md
