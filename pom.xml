@@ -210,6 +210,7 @@
               <!-- Project documentation files (academic analysis, not code) -->
               <inputExclude>DEPENDABILITY_ANALYSIS.md</inputExclude>
               <inputExclude>PROJECT_PROGRESS.md</inputExclude>
+              <inputExclude>SECURITY_SETUP.md</inputExclude>
             </inputExcludes>
           </configuration>
         </plugin>
