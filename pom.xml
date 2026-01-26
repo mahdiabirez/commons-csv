@@ -207,6 +207,8 @@
               <inputExclude>src/test/resources/org/apache/commons/csv/CSV-290/psql.tsv</inputExclude>
               <!-- OpenJML tool installation (third-party, not our code) -->
               <inputExclude>tools/**</inputExclude>
+              <!-- GitHub Actions workflows and configuration -->
+              <inputExclude>.github/**</inputExclude>
               <!-- Project documentation files (academic analysis, not code) -->
               <inputExclude>DEPENDABILITY_ANALYSIS.md</inputExclude>
               <inputExclude>PROJECT_PROGRESS.md</inputExclude>
