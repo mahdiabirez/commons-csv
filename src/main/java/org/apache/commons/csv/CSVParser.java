@@ -882,6 +882,9 @@ public final class CSVParser implements Iterable<CSVRecord>, Closeable {
      * @throws IOException  on parse error or input read-failure.
      * @throws CSVException on invalid CSV input data.
      */
+    //@ ensures \result == null || \result.getRecordNumber() == recordNumber;
+    //@ signals (IOException e) true;
+    //@ signals (CSVException e) true;
     CSVRecord nextRecord() throws IOException {
         CSVRecord result = null;
         recordList.clear();

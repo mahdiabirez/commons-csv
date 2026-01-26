@@ -449,6 +449,9 @@ public final class CSVFormat implements Serializable {
          * @param delimiter the delimiter character.
          * @return This instance.
          */
+        //@ requires delimiter != '\r' && delimiter != '\n';
+        //@ ensures this.delimiter.equals(String.valueOf(delimiter));
+        //@ signals (IllegalArgumentException e) delimiter == '\r' || delimiter == '\n';
         public Builder setDelimiter(final char delimiter) {
             return setDelimiter(String.valueOf(delimiter));
         }

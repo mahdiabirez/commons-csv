@@ -95,6 +95,10 @@ public final class CSVRecord implements Serializable, Iterable<String> {
      *            a column index (0-based)
      * @return the String at the given index
      */
+    //@ requires i >= 0;
+    //@ requires i < values.length;
+    //@ ensures \result == values[i];
+    //@ signals (ArrayIndexOutOfBoundsException e) i < 0 || i >= values.length;
     public String get(final int i) {
         return values[i];
     }
@@ -122,6 +126,13 @@ public final class CSVRecord implements Serializable, Iterable<String> {
      * @see #getParser()
      * @see CSVFormat.Builder#setNullString(String)
      */
+    //@ requires getHeaderMapRaw() != null;
+    //@ requires getHeaderMapRaw().containsKey(name);
+    //@ requires getHeaderMapRaw().get(name) != null;
+    //@ requires getHeaderMapRaw().get(name).intValue() >= 0 && getHeaderMapRaw().get(name).intValue() < values.length;
+    //@ ensures \result == values[getHeaderMapRaw().get(name).intValue()];
+    //@ signals (IllegalStateException e) getHeaderMapRaw() == null;
+    //@ signals (IllegalArgumentException e) getHeaderMapRaw() != null && (getHeaderMapRaw().get(name) == null || getHeaderMapRaw().get(name).intValue() < 0 || getHeaderMapRaw().get(name).intValue() >= values.length);
     public String get(final String name) {
         final Map<String, Integer> headerMap = getHeaderMapRaw();
         if (headerMap == null) {
@@ -243,6 +254,7 @@ public final class CSVRecord implements Serializable, Iterable<String> {
      *            the name of the column to be retrieved.
      * @return whether a given column is mapped.
      */
+    //@ ensures \result == (getHeaderMapRaw() != null && getHeaderMapRaw().containsKey(name));
     public boolean isMapped(final String name) {
         final Map<String, Integer> headerMap = getHeaderMapRaw();
         return headerMap != null && headerMap.containsKey(name);
@@ -255,6 +267,7 @@ public final class CSVRecord implements Serializable, Iterable<String> {
      *         a column index (0-based).
      * @return whether a column with a given index has a value.
      */
+    //@ ensures \result == (0 <= index && index < values.length);
     public boolean isSet(final int index) {
         return 0 <= index && index < values.length;
     }

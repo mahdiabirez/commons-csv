@@ -196,6 +196,8 @@ public final class CSVPrinter implements Flushable, Closeable {
      * @throws IOException
      *             If an I/O error occurs
      */
+    //@ requires appendable != null && format != null;
+    //@ signals (IOException e) true;
     public void print(final Object value) throws IOException {
         lock.lock();
         try {
