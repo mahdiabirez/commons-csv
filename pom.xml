@@ -213,6 +213,12 @@
               <inputExclude>DEPENDABILITY_ANALYSIS.md</inputExclude>
               <inputExclude>PROJECT_PROGRESS.md</inputExclude>
               <inputExclude>SECURITY_SETUP.md</inputExclude>
+              <!-- Docker configuration files -->
+              <inputExclude>Dockerfile</inputExclude>
+              <inputExclude>docker-compose.yml</inputExclude>
+              <inputExclude>.dockerignore</inputExclude>
+              <!-- Visual analysis results (screenshots/images) -->
+              <inputExclude>docs/images/**</inputExclude>
             </inputExcludes>
           </configuration>
         </plugin>
