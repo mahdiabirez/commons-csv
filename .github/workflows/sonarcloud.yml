@@ -52,4 +52,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=mahdiabirez_commons-csv -Dtest='!CSVParserTest#testCSV141Excel,!JiraCsv196Test#testParseFourBytes,!JiraCsv196Test#testParseThreeBytes'
+        run: mvn -B verify jacoco:report org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=mahdiabirez_commons-csv -Dtest='!CSVParserTest#testCSV141Excel,!JiraCsv196Test#testParseFourBytes,!JiraCsv196Test#testParseThreeBytes'
