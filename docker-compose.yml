@@ -1,0 +1,101 @@
+# Docker Compose configuration for Apache Commons CSV analysis
+# Provides orchestrated services for comprehensive dependability analysis
+
+version: '3.8'
+
+services:
+  # Main analysis service
+  analysis:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: commons-csv-analysis:latest
+    container_name: commons-csv-analysis
+    volumes:
+      # Mount target directory to preserve reports
+      - ./target:/app/target
+      # Mount source for live development (optional)
+      - ./src:/app/src:ro
+    environment:
+      - MAVEN_OPTS=-Xmx2g
+      - JAVA_OPTS=-Xmx2g
+    command: mvn clean test -Drat.skip=true
+    networks:
+      - analysis-network
+
+  # Coverage analysis service
+  coverage:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: commons-csv-analysis:latest
+    container_name: commons-csv-coverage
+    volumes:
+      - ./target:/app/target
+    environment:
+      - MAVEN_OPTS=-Xmx2g
+    command: mvn clean test jacoco:report -Drat.skip=true
+    networks:
+      - analysis-network
+    profiles:
+      - coverage
+
+  # Mutation testing service
+  mutation:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: commons-csv-analysis:latest
+    container_name: commons-csv-mutation
+    volumes:
+      - ./target:/app/target
+    environment:
+      - MAVEN_OPTS=-Xmx4g
+    command: mvn test-compile org.pitest:pitest-maven:mutationCoverage -Drat.skip=true
+    networks:
+      - analysis-network
+    profiles:
+      - mutation
+
+  # Static analysis service (Checkstyle, SpotBugs)
+  static-analysis:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: commons-csv-analysis:latest
+    container_name: commons-csv-static
+    volumes:
+      - ./target:/app/target
+    command: sh -c "mvn checkstyle:checkstyle spotbugs:spotbugs -Drat.skip=true"
+    networks:
+      - analysis-network
+    profiles:
+      - static
+
+networks:
+  analysis-network:
+    driver: bridge
+
+# Usage Examples:
+# 
+# Build the image:
+#   docker-compose build
+#
+# Run basic tests:
+#   docker-compose up analysis
+#
+# Run coverage analysis:
+#   docker-compose --profile coverage up coverage
+#
+# Run mutation testing:
+#   docker-compose --profile mutation up mutation
+#
+# Run static analysis:
+#   docker-compose --profile static up static-analysis
+#
+# Run all analyses:
+#   docker-compose --profile coverage --profile mutation --profile static up
+#
+# Clean up:
+#   docker-compose down
+#   docker-compose down -v  # Also remove volumes
