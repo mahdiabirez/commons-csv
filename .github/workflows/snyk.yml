@@ -41,7 +41,7 @@ jobs:
           cache: maven
           
       - name: Build project
-        run: mvn clean install -Dtest='!CSVParserTest#testCSV141Excel,!JiraCsv196Test#testParseFourBytes,!JiraCsv196Test#testParseThreeBytes'
+        run: mvn clean install -DskipTests
         
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/maven@master
@@ -54,12 +54,12 @@ jobs:
       - name: Check if SARIF file exists
         id: sarif-check
         run: |
-          if (Test-Path snyk.sarif) {
-            echo "exists=true" >> $env:GITHUB_OUTPUT
-          } else {
-            echo "exists=false" >> $env:GITHUB_OUTPUT
-          }
-        shell: pwsh
+          if [ -f snyk.sarif ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+        shell: bash
           
       - name: Upload result to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@v3

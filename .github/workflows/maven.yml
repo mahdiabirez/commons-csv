@@ -53,4 +53,4 @@ jobs:
         distribution: ${{ runner.os == 'macOS' && matrix.java == '8' && 'zulu' || 'temurin' }}
         java-version: ${{ matrix.java }}
     - name: Build with Maven
-      run: mvn -Ddoclint=all --show-version --batch-mode --no-transfer-progress -Dtest='!CSVParserTest#testCSV141Excel,!JiraCsv196Test#testParseFourBytes,!JiraCsv196Test#testParseThreeBytes'
+      run: mvn test -Ddoclint=all --show-version --batch-mode --no-transfer-progress -Dtest='!CSVParserTest#testCSV141Excel,!JiraCsv196Test#testParseFourBytes,!JiraCsv196Test#testParseThreeBytes'
