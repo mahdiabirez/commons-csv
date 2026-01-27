@@ -116,11 +116,11 @@ docker-compose --profile static-analysis up static-analysis
 ```
 
 **Benefits:**
-- ✅ Guaranteed identical environment (Java 21, Maven 3.9.12)
-- ✅ No local setup required
-- ✅ Cross-platform compatibility (Windows, macOS, Linux)
-- ✅ Isolated from host system
-- ✅ ~5 minute setup vs 30-60 minutes manual setup
+-  Guaranteed identical environment (Java 21, Maven 3.9.12)
+-  No local setup required
+-  Cross-platform compatibility (Windows, macOS, Linux)
+-  Isolated from host system
+-  ~5 minute setup vs 30-60 minutes manual setup
 
 **Docker Image Details:**
 - Base: Eclipse Temurin JDK 21 LTS
@@ -211,32 +211,32 @@ This fork includes comprehensive software dependability analysis:
 **Visual Analysis Results:**
 
 <details>
-<summary><b>🎯 SonarCloud Quality Dashboard</b> (Click to expand)</summary>
+<summary><b> SonarCloud Quality Dashboard</b> (Click to expand)</summary>
 
 ![SonarCloud Dashboard](docs/images/sonarcloud-dashboard.PNG)
 
 **Highlights:**
-- ✅ Quality Gate: **Passed**
-- ✅ Coverage: **98.8%**
-- ✅ Security Issues: **1** (minor)
-- ✅ Reliability Issues: **4** (minor)
-- ✅ Maintainability: **577** lines to review
-- ✅ Code Duplications: **0.0%**
+-  Quality Gate: **Passed**
+-  Coverage: **98.8%**
+-  Security Issues: **1** (minor)
+-  Reliability Issues: **4** (minor)
+-  Maintainability: **577** lines to review
+-  Code Duplications: **0.0%**
 
 </details>
 
 <details>
-<summary><b>📊 JaCoCo Coverage Report</b> (Click to expand)</summary>
+<summary><b> JaCoCo Coverage Report</b> (Click to expand)</summary>
 
 ![JaCoCo Coverage](docs/images/jacoco-coverage.PNG)
 
 **Coverage Metrics:**
-- ✅ Instruction Coverage: **99%** (52 of 5,517 missed)
-- ✅ Branch Coverage: **97%** (18 of 746 missed)
-- ✅ Line Coverage: **99%** (18 missed, 666 covered)
-- ✅ Complexity Coverage: **97%** (5 missed, 1,225 covered)
-- ✅ Method Coverage: **100%** (0 missed, 286 covered)
-- ✅ Class Coverage: **100%** (0 missed, 17 covered)
+-  Instruction Coverage: **99%** (52 of 5,517 missed)
+-  Branch Coverage: **97%** (18 of 746 missed)
+-  Line Coverage: **99%** (18 missed, 666 covered)
+-  Complexity Coverage: **97%** (5 missed, 1,225 covered)
+-  Method Coverage: **100%** (0 missed, 286 covered)
+-  Class Coverage: **100%** (0 missed, 17 covered)
 
 </details>
 
