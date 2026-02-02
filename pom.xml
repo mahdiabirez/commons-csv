@@ -213,6 +213,7 @@
               <inputExclude>DEPENDABILITY_ANALYSIS.md</inputExclude>
               <inputExclude>PROJECT_PROGRESS.md</inputExclude>
               <inputExclude>SECURITY_SETUP.md</inputExclude>
+              <inputExclude>ACADEMIC_REPORT.md</inputExclude>
               <!-- Docker configuration files -->
               <inputExclude>Dockerfile</inputExclude>
               <inputExclude>docker-compose.yml</inputExclude>
@@ -453,21 +454,15 @@
           <version>2.4.0</version>
           <scope>test</scope>
         </dependency>
+        <!-- Kasparov CSV dependency removed - no longer available in repositories -->
+        <!--
         <dependency>
-          <!-- 
-            org.skife.kasparov:csv:1.0 is not in Maven Central, download manually from http://kasparov.skife.org/csv/csv-1.0.jar and install with:
-            - Linux
-              curl https://repo.marketcetera.org/maven/org/skife/kasparov/csv/1.0/csv-1.0.jar -o $TMPDIR/csv-1.0.jar
-              mvn install:install-file -Dfile=$TMPDIR/csv-1.0.jar -DgroupId=org.skife.kasparov -DartifactId=csv -Dversion=1.0 -Dpackaging=jar
-            - Windows
-              curl https://repo.marketcetera.org/maven/org/skife/kasparov/csv/1.0/csv-1.0.jar -o %TMPDIR%/csv-1.0.jar
-              mvn install:install-file -Dfile=%TMPDIR%/csv-1.0.jar -DgroupId=org.skife.kasparov -DartifactId=csv -Dversion=1.0 -Dpackaging=jar
-           -->
           <groupId>org.skife.kasparov</groupId>
           <artifactId>csv</artifactId>
           <version>1.0</version>
           <scope>provided</scope>
         </dependency>
+        -->
 
         <dependency>
           <groupId>org.apache.commons</groupId>

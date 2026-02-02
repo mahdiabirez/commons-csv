@@ -60,6 +60,8 @@ import com.opencsv.CSVReaderBuilder;
 @State(Scope.Benchmark)
 public class CSVBenchmark {
 
+    // Kasparov CSV library is no longer available, commented out
+    /*
     private static final class CountingReaderCallback implements org.skife.csv.ReaderCallback {
         public int count;
 
@@ -68,6 +70,7 @@ public class CSVBenchmark {
             count++;
         }
     }
+    */
 
     private String data;
 
@@ -153,6 +156,8 @@ public class CSVBenchmark {
         return count;
     }
 
+    // Kasparov CSV library benchmark - commented out (dependency no longer available)
+    /*
     @Benchmark
     public int parseSkifeCSV(final Blackhole bh) throws Exception {
         final org.skife.csv.CSVReader reader = new org.skife.csv.SimpleReader();
@@ -166,6 +171,7 @@ public class CSVBenchmark {
         bh.consume(callback);
         return callback.count;
     }
+    */
 
     @Benchmark
     public int parseSuperCSV(final Blackhole bh) throws Exception {
